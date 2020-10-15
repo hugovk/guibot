@@ -52,6 +52,7 @@ addons:
     - x11vnc
 # install any dependencies and build package
 install:
+- if [[ $INSTALL_VARIANT == "pip" ]]; then travis_retry pip --default-timeout=60 install -U pip; fi
 - if [[ $INSTALL_VARIANT == "pip" ]]; then travis_retry pip --default-timeout=60 install -r packaging/pip_requirements.txt; fi
 before_script:
 - export DISPLAY=:99.0
